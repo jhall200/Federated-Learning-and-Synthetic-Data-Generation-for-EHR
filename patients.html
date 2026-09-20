@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EHRSoft - Patient Records</title>
+<style>
+body { font-family: sans-serif; margin: 40px; }
+table { border-collapse: collapse; margin-top: 15px; }
+th, td { border: 1px solid #999; padding: 5px; text-align: left; }
+.flash { border: 1px solid #999; padding: 8px; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<h1>Synthetic Patient Records (first 100 shown)</h1>
+<p>Logged in as {{ username }} | <a href="{{ url_for('logout') }}">Logout</a></p>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+{{ table | safe }}
+
+<p><a href="{{ url_for('train') }}">Commence Federated Learning Training</a></p>
+</body>
+</html>

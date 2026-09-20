@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EHRSoft - Login</title>
+<style>
+body { font-family: sans-serif; margin: 40px; }
+form { margin-top: 15px; }
+input { display: block; margin-bottom: 10px; padding: 4px; }
+.flash { border: 1px solid #999; padding: 8px; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<h2>EHRSoft Login</h2>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form method="POST">
+<input type="text" name="username" placeholder="Username" required autofocus>
+<input type="password" name="password" placeholder="Password" required>
+<button type="submit">Login</button>
+</form>
+</body>
+</html>
